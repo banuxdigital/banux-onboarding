@@ -940,7 +940,8 @@ function render(){
   renderHud();
   setActiveNav(state.route);
   const el = document.getElementById("screen");
-  if(!state.profile){ el.innerHTML = renderStart(); attachStart(); return; }
+  const isRhRoute = (state.route==="rhdashboard" || state.route==="ranking");
+  if(!state.profile && !isRhRoute){ el.innerHTML = renderStart(); attachStart(); return; }
   if(!HUB_ROUTES_KEEP_RETURN(state.route)) returnMissionId = null;
 
   if(state.route==="start") state.route="map";
